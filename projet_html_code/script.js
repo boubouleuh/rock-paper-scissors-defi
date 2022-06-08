@@ -78,43 +78,58 @@ function computerchoose(win) {
     }
     else if (win == "paper" && listname[index] == "rock"){
         announce.textContent = "WIN"
-        scoring()
+        winfunction()
     }
     else if (win == "paper" && listname[index] == "scissors"){
         announce.textContent = "LOOSE"
+        loosefunction()
     }
     else if (win == "rock" && listname[index] == "rock"){
         announce.textContent = "TIE"
     }
     else if (win == "rock" && listname[index] == "scissors"){
         announce.textContent = "WIN"
-        scoring()
+        winfunction()
     }
     else if (win == "rock" && listname[index] == "paper"){
         announce.textContent = "LOOSE"
+        loosefunction()
     }
     else if (win == "scissors" && listname[index] == "scissors"){
         announce.textContent = "TIE"
     }
     else if (win == "scissors" && listname[index] == "paper"){
         announce.textContent = "WIN"
-        scoring()
+        winfunction()
         
     }
     else if (win == "scissors" && listname[index] == "rock"){
         announce.textContent = "LOOSE"
+        loosefunction()
     }
     announce.parentElement.style.visibility = "visible"
     }
 
-function scoring(params) {
+function winfunction() {
+        if (!localStorage.getItem("score")){
+            localStorage.setItem("score",1);
+        }
+        else
+        {
+            var score = localStorage.getItem("score");
+            localStorage.setItem("score",(++score) );
+        }
+        scoreValue.textContent = localStorage.getItem("score")
+    }
+ 
+function loosefunction() {
     if (!localStorage.getItem("score")){
-        localStorage.setItem("score",1);
+        localStorage.setItem("score",-1);
     }
     else
     {
         var score = localStorage.getItem("score");
-        localStorage.setItem("score",(++score) );
+        localStorage.setItem("score",(score-1) );
     }
     scoreValue.textContent = localStorage.getItem("score")
 }
