@@ -27,6 +27,12 @@
     divPlayAgainBtn.addEventListener("click",() =>{
         step1.classList.remove('step-1-minimize')
         step2.classList.remove('step-2-minimizer')
+        announce.textContent = ""
+        announce.parentElement.style.visibility = "hidden"
+        computerpick.querySelector('.replace').classList.remove("rock")
+        computerpick.querySelector('.replace').classList.remove("paper")
+        computerpick.querySelector('.replace').classList.remove("scissors")
+        computerpick.querySelector('.replace').querySelector('div').remove()
     })
 
    
@@ -41,6 +47,7 @@ var computerpick = document.querySelector(".computer-pick")
 var announce = document.querySelector(".annouce-winner-text")
 
 var scoreValue = document.querySelector(".score-value")
+localStorage.setItem("score",0)
 scoreValue.textContent = localStorage.getItem("score")
 announce.textContent = ""
 announce.parentElement.style.visibility = "hidden"
@@ -116,25 +123,15 @@ function computerchoose(win) {
     }
 
 function winfunction() {
-        if (!localStorage.getItem("score")){
-            localStorage.setItem("score",1);
-        }
-        else
-        {
-            var score = localStorage.getItem("score");
-            localStorage.setItem("score",(++score) );
-        }
+
+        var score = localStorage.getItem("score");
+        localStorage.setItem("score",(++score) );
         scoreValue.textContent = localStorage.getItem("score")
-    }
+}
  
 function loosefunction() {
-    if (!localStorage.getItem("score")){
-        localStorage.setItem("score",-1);
-    }
-    else
-    {
-        var score = localStorage.getItem("score");
-        localStorage.setItem("score",(score-1) );
-    }
+
+    var score = localStorage.getItem("score");
+    localStorage.setItem("score",(score-1) );
     scoreValue.textContent = localStorage.getItem("score")
 }
