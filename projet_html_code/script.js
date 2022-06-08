@@ -74,6 +74,7 @@ function computerchoose(win) {
         computerpick.querySelector('.replace').classList.add(listname[index])
     if (win == "paper" && listname[index] == "paper"){
         announce.textContent = "TIE"
+
     }
     else if (win == "paper" && listname[index] == "rock"){
         announce.textContent = "WIN"
