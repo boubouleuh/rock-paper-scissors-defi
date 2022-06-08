@@ -35,6 +35,8 @@ var playerpick = document.querySelector(".player-pick")
 var computerpick = document.querySelector(".computer-pick")
 var announce = document.querySelector(".annouce-winner-text")
 
+var scoreValue = document.querySelector(".score-value")
+scoreValue.textContent = localStorage.getItem("score")
 announce.textContent = ""
 announce.parentElement.style.visibility = "hidden"
 function choose(div,name) {
@@ -75,6 +77,7 @@ function computerchoose(win) {
     }
     else if (win == "paper" && listname[index] == "rock"){
         announce.textContent = "WIN"
+        scoring()
     }
     else if (win == "paper" && listname[index] == "scissors"){
         announce.textContent = "LOOSE"
@@ -84,6 +87,7 @@ function computerchoose(win) {
     }
     else if (win == "rock" && listname[index] == "scissors"){
         announce.textContent = "WIN"
+        scoring()
     }
     else if (win == "rock" && listname[index] == "paper"){
         announce.textContent = "LOOSE"
@@ -93,9 +97,23 @@ function computerchoose(win) {
     }
     else if (win == "scissors" && listname[index] == "paper"){
         announce.textContent = "WIN"
+        scoring()
+        
     }
     else if (win == "scissors" && listname[index] == "rock"){
         announce.textContent = "LOOSE"
     }
     announce.parentElement.style.visibility = "visible"
     }
+
+function scoring(params) {
+    if (!localStorage.getItem("score")){
+        localStorage.setItem("score",1);
+    }
+    else
+    {
+        var score = localStorage.getItem("score");
+        localStorage.setItem("score",(++score) );
+    }
+    scoreValue.textContent = localStorage.getItem("score")
+}
