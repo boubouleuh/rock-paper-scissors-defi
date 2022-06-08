@@ -1,6 +1,7 @@
     var divAdvanced = document.querySelector('.advanced');
     var divRules = document.querySelector('.rules-btn');
     var divCloseRules = document.querySelector('.close-rules');
+    var divPlayAgainBtn = document.querySelector('.play-again-btn');
 
     divRules.addEventListener("click",() =>{
         const box = document.getElementsByTagName('aside');
@@ -23,6 +24,10 @@
         boxx[0].style.visibility = "hidden";
     })
     
+    divPlayAgainBtn.addEventListener("click",() =>{
+        step1.classList.remove('step-1-minimize')
+        step2.classList.remove('step-2-minimizer')
+    })
 
    
 
@@ -42,7 +47,7 @@ function choose(div,name) {
     playerpick.querySelector('.replace').classList.remove("rock")
     playerpick.querySelector('.replace').classList.remove("paper")
     playerpick.querySelector('.replace').classList.remove("scissors")
-    step2.classList.toggle('step-2-minimizer')
+    step2.classList.add('step-2-minimizer')
     console.log(playerpick.querySelector('.replace').querySelector('div'))
     if (playerpick.querySelector('.replace').querySelector('div')){
         playerpick.querySelector('.replace').querySelector('div').remove()
